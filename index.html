@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List</title>
+    <style>
+        .main-heading {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .list-container {
+            height: 400px;
+            width: 400px;
+            margin: 20px auto;
+            background-color: #cd9159;
+        }
+
+        .todo-input {
+            display: block;
+            margin: 10px auto;
+            width: 200px;
+        }
+        .todoItem{
+            background-color: #65a949;
+            border-radius: 20px;
+           color: black;
+           font-size: 18px;
+           padding: 10px 20px;
+          
+           margin: 20px auto;
+           width: 80%;
+        }
+
+        .todo-add {
+            background-color: black;
+            color: white;
+            cursor: pointer;
+            padding: 10px 40px;
+            border-radius: 20px;
+            font-size: 18px;
+            display: block;
+            margin: 10px auto;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 class="main-heading">Todo List</h1>
+    <div class="list-container" id="list-container">
+        
+    </div>
+    <div class="action-container">
+        <input type="text" id="todo-element" class="todo-input" onclick="add()">
+        <button class="todo-add" onclick="add()">Add</button>
+    </div>
+
+
+    <script>
+
+        let todoList = [];
+
+
+        function add() {
+            const inputElement = document.getElementById('todo-element');
+            todoList.push(inputElement.value);
+
+
+            inputElement.value = "";
+
+            renderToDoList();
+        }
+
+        function renderToDoList() {
+            const listContainer = document.getElementById('list-container');
+            listContainer.innerHTML = "";
+
+            for (const todoItem of todoList) {
+                listContainer.innerHTML += `<div class="todoItem">${todoItem}</div>`;
+            }
+        }
+
+    </script>
+</body>
+
+</html>
